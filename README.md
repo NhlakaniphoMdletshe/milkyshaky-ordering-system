@@ -415,3 +415,215 @@ Manage all configurable options for the system:
 - Growth trends
 
 ---
+
+## 🔌 API Documentation
+
+### Authentication Endpoints
+
+**POST** `/api/auth/register`
+- Register a new user
+- Body: `{ email, password, first_name, mobile_number }`
+- Returns: User object + JWT token
+
+**POST** `/api/auth/login`
+- Login existing user
+- Body: `{ email, password }`
+- Returns: User object + JWT token
+
+**GET** `/api/auth/me`
+- Get current user profile
+- Requires: Authentication header
+- Returns: User details
+
+### Order Endpoints
+
+**GET** `/api/orders`
+- Get all orders for current user
+- Requires: Authentication
+- Returns: Array of orders
+
+**GET** `/api/orders/:id`
+- Get single order details
+- Requires: Authentication
+- Returns: Order with items
+
+**POST** `/api/orders`
+- Create new order
+- Requires: Authentication
+- Body: `{ restaurant_id, pickup_time, items[] }`
+- Returns: Created order
+
+**POST** `/api/orders/:id/pay`
+- Process payment for order
+- Requires: Authentication
+- Body: `{ payment_method, payment_reference }`
+- Returns: Payment confirmation + sends email
+
+### Lookup Endpoints
+
+**GET** `/api/lookups/flavours`
+- Get all active flavours
+- Public endpoint
+- Returns: Array of flavours with prices
+
+**GET** `/api/lookups/toppings`
+- Get all active toppings
+- Public endpoint
+- Returns: Array of toppings with prices
+
+**GET** `/api/lookups/consistencies`
+- Get all active consistencies
+- Public endpoint
+- Returns: Array of consistencies with prices
+
+**GET** `/api/lookups/restaurants`
+- Get all active restaurants
+- Public endpoint
+- Returns: Array of restaurant locations
+
+**POST** `/api/lookups/flavours`
+- Add new flavour (Manager only)
+- Requires: Manager authentication
+- Body: `{ name, price }`
+
+**PUT** `/api/lookups/flavours/:id`
+- Update flavour (Manager only)
+- Requires: Manager authentication
+- Body: `{ name, price, is_active }`
+
+**DELETE** `/api/lookups/flavours/:id`
+- Deactivate flavour (Manager only)
+- Requires: Manager authentication
+
+### Report Endpoints
+
+**GET** `/api/reports/my-orders`
+- Get order history for current user
+- Requires: Authentication
+- Query params: `status, from_date, to_date, limit`
+
+**GET** `/api/reports/trends`
+- Get order trends by day of week (Manager only)
+- Requires: Manager authentication
+- Returns: Order volumes per day
+
+**GET** `/api/reports/popular-items`
+- Get most popular items (Manager only)
+- Requires: Manager authentication
+- Returns: Top flavours, toppings, consistencies
+
+**GET** `/api/reports/customers`
+- Get customer statistics (Manager only)
+- Requires: Manager authentication
+- Returns: Top customers and spending data
+
+---
+
+## 🐛 Troubleshooting
+
+### Backend Won't Start
+
+**Problem:** "Cannot find module" error
+- **Solution:** Run `npm install` in the backend folder
+
+**Problem:** "Database connection failed"
+- **Solution 1:** Check PostgreSQL is running
+- **Solution 2:** Verify credentials in `.env` file
+- **Solution 3:** Ensure database `milkyshaky` exists
+
+**Problem:** "Port 5000 already in use"
+- **Solution:** Change PORT in `.env` to 5001 or another available port
+
+### Frontend Won't Start
+
+**Problem:** "react-scripts not found"
+- **Solution:** Run `npm install` in the frontend folder
+
+**Problem:** Blank white screen
+- **Solution 1:** Open browser console (F12) and check for errors
+- **Solution 2:** Clear browser cache and localStorage
+- **Solution 3:** Ensure backend is running
+
+### Email Not Sending
+
+**Problem:** "Email authentication failed"
+- **Solution:** Use Gmail App Password, not a regular password
+- **Steps:**
+  1. Enable 2-Step Verification on Gmail
+  2. Generate App Password
+  3. Update `.env` with the 16-character password
+
+**Problem:** Emails go to spam
+- **Solution:** This is normal for test environments. Check the spam folder.
+
+### Payment Not Working
+
+**Problem:** Payment fails
+- **Solution:** This is a test mode. The payment is simulated.
+- Any card details will work in test mode.
+
+### Can't Login as Manager
+
+**Problem:** "Invalid credentials."
+- **Solution:** Register a new account, then update the role in the database:
+  ```sql
+  UPDATE users SET role = 'manager' WHERE email = 'your-email@example.com';
+  ```
+
+### Orders Show as Pending Instead of Paid
+
+**Problem:** Status doesn't update after payment
+- **Solution:** Check the browser console for errors
+- Verify payment endpoint is being called
+- Check backend logs for errors
+
+---
+
+## 📧 Support
+
+If you encounter issues not covered in this guide:
+
+1. **Check the browser console** (F12 → Console tab)
+2. **Check the backend terminal** for error messages
+3. **Verify all environment variables** in `.env`
+4. **Ensure PostgreSQL is running**
+5. **Make sure both backend and frontend are running**
+
+---
+
+## ✅ Mandatory Requirements Checklist
+
+All assignment requirements have been implemented:
+
+- ✅ **Database:** PostgreSQL with 11 tables
+- ✅ **Configurable Fees:** System config table for VAT, min/max drinks, etc.
+- ✅ **Lookup Manager:** Complete CRUD interface for all lookups
+- ✅ **Full Auditing:** audit_logs table tracks all changes
+- ✅ **Confirmation Email:** Sent after successful payment
+- ✅ **Payment Gateway:** Stripe integration (test mode)
+- ✅ **Two User Profiles:** Patron and Manager roles with different permissions
+- ✅ **Final Receipt by Email:** HTML email with complete order details
+- ✅ **User/Patron Reports:** Order history with filters
+- ✅ **Management Reports:** Trends, revenue, customers, popular items
+
+---
+
+## 🎉 Conclusion
+
+Congratulations! You now have a fully functional online ordering system for Milky Shaky Custom Drinks.
+
+**Key Features:**
+- Customers can order custom milkshakes online
+- Automatic discount calculation for loyal customers
+- Email confirmations with order details
+- Real-time order tracking
+- Manager dashboard for complete control
+- Full audit trail of all system changes
+
+**Built With:**
+- Modern React frontend
+- RESTful API with Express.js
+- PostgreSQL database
+- JWT authentication
+- Email notifications
+- Payment processing
