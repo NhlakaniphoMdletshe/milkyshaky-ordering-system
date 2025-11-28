@@ -311,24 +311,31 @@ Use the pre-created manager account:
 4. **Add More Drinks (Optional):**
    - Click "+ Add Another Drink" (up to 10 drinks)
    - Each drink can be customized differently
+  
+  <img width="1403" height="357" alt="order" src="https://github.com/user-attachments/assets/b413bcaf-59ed-4948-a7b0-ad255e5f6b79" />
 
 5. **Review Order Summary:**
    - Check subtotal, VAT, and total amount
    - Any applicable discounts will be shown
 
-6. **Click "Continue to Payment"**
+<img width="1098" height="747" alt="order-detail" src="https://github.com/user-attachments/assets/8e8c9273-7a7b-4aa3-ad30-25d9745fb740" />
 
+6. **Click "Continue to Payment"**
 7. **Complete Payment:**
    - Select payment method (Credit Card, Debit Card, or Cash on Pickup)
    - Enter card details if paying by card
    - Click "Pay"
 
+ <img width="596" height="742" alt="registration" src="https://github.com/user-attachments/assets/cb393246-b991-4b5c-8778-8da663f07461" />
+
 8. **Confirmation:**
    - You'll see a success message
    - Check your email for order confirmation
-   - You'll be redirected to "My Orders"
+   - You'll be redirected to "My Orders."
 
 ### Viewing Orders
+
+<img width="1480" height="357" alt="my-orders" src="https://github.com/user-attachments/assets/cac665fb-c0e5-46cb-bf4d-ba67b4259457" />
 
 1. **Click "My Orders" in the navigation bar**
 2. **See all your orders** with status badges:
@@ -393,6 +400,8 @@ Manage all configurable options for the system:
   - Discount percentage
 - Example: "Bronze tier: 5 orders with 2+ drinks = 5% discount"
 
+<img width="1472" height="697" alt="dashboard-lookups" src="https://github.com/user-attachments/assets/8985566f-c470-49fe-85f3-0aa02e63534c" />
+
 ### Reports and Analytics
 
 **Order Trends:**
@@ -415,6 +424,8 @@ Manage all configurable options for the system:
 - Daily revenue breakdown
 - Total orders and sales
 - Growth trends
+
+<img width="1528" height="372" alt="dashboard-reports" src="https://github.com/user-attachments/assets/a72f2dbd-a5d2-4b81-a1c9-4ec231cba108" />
 
 ---
 
