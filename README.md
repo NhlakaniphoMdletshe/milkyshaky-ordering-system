@@ -326,7 +326,7 @@ Use the pre-created manager account:
    - Enter card details if paying by card
    - Click "Pay"
 
- <img width="596" height="742" alt="registration" src="https://github.com/user-attachments/assets/cb393246-b991-4b5c-8778-8da663f07461" />
+ <img width="956" height="760" alt="payment" src="https://github.com/user-attachments/assets/318db9a6-505e-4333-afb6-68cff7f33873" />
 
 8. **Confirmation:**
    - You'll see a success message
