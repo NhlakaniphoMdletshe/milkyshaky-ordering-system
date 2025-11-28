@@ -286,6 +286,8 @@ The browser will automatically open to `http://localhost:3000`
    - Password (minimum 6 characters)
 4. **Click "Sign Up"** - You'll be automatically logged in
 
+<img width="596" height="742" alt="registration" src="https://github.com/user-attachments/assets/4c99b5af-bc10-4cad-b81f-7a6a82bd0a24" />
+
 **For Managers:**
 
 Use the pre-created manager account:
